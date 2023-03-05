@@ -1,0 +1,55 @@
+import random
+nom = input("Veuillez saisir votre nom : ")
+user_wins = 0
+pc_wins = 0
+nuls = 0
+
+while True :
+    print(nom," : ",user_wins," égalités : ",nuls," PC : ", pc_wins)
+    coupJoueur = input("Entrez votre coup: (p)ierre, (f)euille, (c)iseaux ou (q)uitter :")
+    if coupJoueur =="q":
+        print(nom," : ",user_wins," égalités : ",nuls," PC : ", pc_wins)
+        print("Merci d'avoir joué !")
+        break
+    if coupJoueur != "p" and coupJoueur != "f" and coupJoueur != "c" :
+        continue
+    
+    if coupJoueur == "p" :
+        print("PIERRE contre ... ",end=" ")
+    elif coupJoueur == "f" :
+        print("FEUILLE contre ... ",end=" ")
+    else:
+        print("CISEAUX contre ... ",end=" ")
+        
+    randomNombre = random.randint(1,3)
+    if randomNombre == 1 :
+        coupPC = "p"
+        print("PIERRE")
+    elif randomNombre == 2 :
+        coupPC = "f"
+        print("FEUILLE")
+    else:
+        coupPC = "c"
+        print("CISEAUX")
+        
+    if coupJoueur == coupPC :
+        print("Partie est nulle !")
+        nuls = nuls + 1
+    elif coupJoueur =="p" and coupPC =="c" :
+        print("Vous avez gagné ! ")
+        user_wins = user_wins + 1
+    elif coupJoueur =="f" and coupPC =="p" :
+        print("Vous avez gagné ! ")
+        user_wins = user_wins + 1
+    elif coupJoueur =="c" and coupPC =="f" :
+        print("Vous avez gagné ! ")
+        user_wins = user_wins + 1
+    elif coupJoueur =="p" and coupPC =="f" :
+        print("Vous avez perdu ! ")
+        pc_wins = pc_wins + 1
+    elif coupJoueur =="f" and coupPC =="c" :
+        print("Vous avez perdu ! ")
+        pc_wins = pc_wins + 1
+    elif coupJoueur =="c" and coupPC =="p" :
+        print("Vous avez perdu ! ")
+        pc_wins = pc_wins + 1
